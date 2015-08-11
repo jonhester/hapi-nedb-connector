@@ -1,6 +1,6 @@
 {
   "name": "hapi-nedb-connector",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple connector for hapi and nedb",
   "main": "lib/index.js",
   "scripts": {
