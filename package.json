@@ -1,0 +1,24 @@
+{
+  "name": "hapi-nedb-connector",
+  "version": "0.0.1",
+  "description": "A simple connector for hapi and nedb",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "lab -M 5000 -t 100 -a code -L"
+  },
+  "keywords": [
+    "hapi",
+    "nedb",
+    "connector",
+    "drive"
+  ],
+  "author": "Jon Hester",
+  "license": "MIT",
+  "devDependencies": {
+    "code": "^1.5.0",
+    "hapi": "^8.8.1",
+    "joi": "^6.6.1",
+    "lab": "^5.15.1",
+    "nedb": "^1.1.3"
+  }
+}
