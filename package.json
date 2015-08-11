@@ -6,6 +6,13 @@
   "scripts": {
     "test": "lab -M 5000 -t 100 -a code -L"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jonhester/hapi-nedb-connector.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonhester/hapi-nedb-connector/issues"
+  },
   "keywords": [
     "hapi",
     "nedb",
@@ -14,11 +21,13 @@
   ],
   "author": "Jon Hester",
   "license": "MIT",
+  "dependencies": {
+    "joi": "^6.6.1",
+    "nedb": "^1.1.3"
+  },
   "devDependencies": {
     "code": "^1.5.0",
     "hapi": "^8.8.1",
-    "joi": "^6.6.1",
-    "lab": "^5.15.1",
-    "nedb": "^1.1.3"
+    "lab": "^5.15.1"
   }
 }
