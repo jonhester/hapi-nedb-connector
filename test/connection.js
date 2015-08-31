@@ -64,7 +64,7 @@ describe('Hapi server', function() {
         path: '/',
         handler: function(request, reply) {
           var plugin = request.server.plugins['hapi-nedb-connector'];
-          plugin.db.collection('test').insert({id: 1, test: [1,2,3]});
+          plugin.db('test').insert({id: 1, test: [1,2,3]});
 
           done();
         }
@@ -112,11 +112,11 @@ describe('Hapi server', function() {
         path: '/',
         handler: function(request, reply) {
           var plugin = request.server.plugins['hapi-nedb-connector'];
-          plugin.db.collection('test').insert({id: 1, test: [1,2,3]});
+          plugin.db('test').insert({id: 1, test: [1,2,3]});
 
           expect(plugin.db).to.exist();
           
-          plugin.db.collection('test').find({ id: 1 }, function (err, docs) {
+          plugin.db('test').find({ id: 1 }, function (err, docs) {
 
             expect(docs[0]).to.exist();
             expect(docs[0].test).to.deep.equal([1,2,3]);  
