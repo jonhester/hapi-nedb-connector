@@ -9,36 +9,48 @@ npm install hapi-nedb-connector
 
 ## Usage
 ```
-var Hapi = require("hapi");
+// use piping to allow for autoreloading on code changes when not in production
+if (process.env.NODE_ENV !== "production" && !require("piping")({hook: true})) {
+	return;
+}
 
+var Hapi = require('hapi');
+
+// Create a server with a host and port
 var server = new Hapi.Server();
-server.connection({ port: 3000 });
+
+server.connection({
+    host: 'localhost',
+    port: 8000
+});
 
 server.register({
-    register: require('hapi-nedb-connector'),
-    options: {
-        directory: 'data/'
-    }
+	register: require('hapi-nedb-connector'),
+	options: {
+		directory: 'data/'
+	}
 }, function (err) {
-    
-    server.route({
-        method: 'GET',
-        path: '/',
-        handler: function (request, reply) {
-            var db = server.plugins['hapi-nedb-connector'].db;
-            
-            db('deployments').insert(deployment, function(err, newDeployment) {
-					      child.send({repo: request.payload.repo, hash: request.payload.hash});
-					      reply({message: 'build started'});
-				    });
-				    
-            reply('Hello, world!');
-        }
-    });
+
+	server.route({
+		method: 'GET',
+		path: '/',
+		handler: function (request, reply) {
+			// Access plugin
+			var db = server.plugins['hapi-nedb-connector'].db;
+			
+			// Use requests database and create requests database if it does not exist
+			db('requests').insert(request.info, function(err, newRequest) {
+				reply({message: 'request added to database'});
+			});
+
+		}
+	});
 });
 
-server.start(function () {
-    console.log('Server running at:', server.info.uri);
+// Start the server
+server.start(function() {
+     console.log('Server running at:', server.info.uri);
 });
+
 
 ```
