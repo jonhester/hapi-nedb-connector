@@ -9,11 +9,6 @@ npm install hapi-nedb-connector
 
 ## Usage
 ```
-// use piping to allow for autoreloading on code changes when not in production
-if (process.env.NODE_ENV !== "production" && !require("piping")({hook: true})) {
-	return;
-}
-
 var Hapi = require('hapi');
 
 // Create a server with a host and port
